@@ -1,18 +1,11 @@
-import { BehaviorSubject } from 'rxjs';
-
-const initialState = {
-  data: 0,
-  timestamp: new Date(),
-  error: ''
-};
+import { BehaviorSubject } from 'rxjs'
+import { initialState } from '../utils/constants'
 
 class TemperatureStore {
 
-  constructor() {
-    this.state = initialState
-    this.subject = new BehaviorSubject(this.state)
-    this.initialState = initialState
-  }
+  state = initialState
+  subject = new BehaviorSubject(this.state)
+  initialState = initialState
 
   subscribe = (setState) => this.subject.subscribe(setState)
 

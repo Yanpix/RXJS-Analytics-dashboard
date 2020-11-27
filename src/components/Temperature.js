@@ -1,15 +1,18 @@
-import React, { useCallback, useEffect, useState, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react'
 import { getRandomNumber, getRandomRespone, getUnit } from "../utils"
-import { COLORS } from '../utils/constants';
-import temperatureStore from '../store/temperature';
-import Monitor from './Monitor';
+import temperatureStore from '../store/temperature'
+import { COLORS } from '../utils/constants'
+import Monitor from './Monitor'
 
 export default function Tempature() {
 
   const [temperatureState, setTemperatureState] = useState(temperatureStore.initialState)
 
-  useLayoutEffect(()=> {
+  useEffect(()=> {
     temperatureStore.subscribe(setTemperatureState);
+    return () => {
+      temperatureStore.clearTemperature()
+    }
   },[]);
 
   const updateTempature = useCallback(() => {

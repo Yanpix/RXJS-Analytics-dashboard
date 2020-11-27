@@ -14,6 +14,7 @@ export default function GeneralInfo() {
   useEffect(() => {
     generalStore.getLatestInfo()
       .subscribe(setState)
+    return () => generalStore.unsubscribe()
   }, [])
 
   return (

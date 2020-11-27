@@ -1,15 +1,18 @@
-import React, { useCallback, useEffect, useState, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react'
 import { getRandomNumber, getRandomRespone, getUnit } from "../utils"
-import airPressureStore from '../store/airPressure';
-import { COLORS } from '../utils/constants';
-import Monitor from './Monitor';
+import airPressureStore from '../store/airPressure'
+import { COLORS } from '../utils/constants'
+import Monitor from './Monitor'
 
 export default function AirPressure() {
 
   const [airPressure, setAirPressure] = useState(airPressureStore.initialState)
 
-  useLayoutEffect(()=> {
+  useState(()=> {
     airPressureStore.subscribe(setAirPressure);
+    return () => {
+      airPressureStore.clearAirPressure()
+    }
   },[]);
 
   const updateAirPressure = useCallback(() => {

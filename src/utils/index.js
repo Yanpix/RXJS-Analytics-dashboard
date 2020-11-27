@@ -11,8 +11,6 @@ export const getRandomRespone = (callback) => {
   return new Observable(sub => {
     let timeout = null;
   
-    // recursively send a random number to the subscriber
-    // after a random delay
     (function go() {
       timeout = setTimeout(
         () => {
@@ -23,7 +21,6 @@ export const getRandomRespone = (callback) => {
       );
     })();
   
-    // clear any pending timeout on teardown
     return () => clearTimeout(timeout);
   });
 }
@@ -56,7 +53,6 @@ const UpperFirst = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-
 export const toSentenceCase = (str) => {
   const result = str.replace( /([A-Z])/g, " $1" )
   const finalResult = UpperFirst(result)
@@ -69,4 +65,38 @@ export const toObject = ([temperature, airPressure, humidity]) => {
     airPressure,
     humidity
   }
+}
+
+const addZero = (num) => {
+  if (num <= 9) return '0' + num 
+  return num
+}
+
+const generateTime = () => {
+  const date = new Date()
+  const hours = addZero(date.getHours())
+  const minutes = addZero(date.getMinutes())
+  return `${hours}:${minutes}`
+}
+
+const checkIfDataString = (field) => {
+  return typeof field.data === 'string' ? 0 : field.data
+}
+
+export const transformToCharData = ({ temperature, airPressure, humidity }) => {
+  return {
+    temperature: checkIfDataString(temperature),
+    airPressure: checkIfDataString(airPressure),
+    humidity: checkIfDataString(humidity),
+    time: generateTime()
+  }
+}
+
+export const loopTimeline = (setState, maxData) => (value) => {
+  setState(prevData => {
+    if (prevData.length > maxData) {
+      return prevData.slice(1).concat(transformToCharData(value))
+    }
+    return prevData.concat(transformToCharData(value))
+  })
 }

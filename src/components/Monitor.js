@@ -1,8 +1,8 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import PropTypes from 'prop-types';
-import Title from './Title';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import PropTypes from 'prop-types'
+import Title from './Title'
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,6 +11,7 @@ export const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Monitor({ title, value, color }) {
+  
   const classes = useStyles();
 
   return (

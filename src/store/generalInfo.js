@@ -1,11 +1,11 @@
-import { combineLatest  } from 'rxjs';
+import { combineLatest  } from 'rxjs'
 import { map, throttleTime  } from 'rxjs/internal/operators'
 
 import temperatureStore from './temperature'
 import airPressureStore from './airPressure'
 import humidityStore from './humidity'
 
-import { checkForNoAnswer, toObject } from '../utils';
+import { checkForNoAnswer, toObject } from '../utils'
 
 
 class GeneralStore {
@@ -33,6 +33,10 @@ class GeneralStore {
 
   toObject = (dataArr) => {
     return toObject(dataArr)
+  }
+
+  unsubscribe = () => {
+    this.streams$.forEach(stream$ => stream$.unsubscribe())
   }
 }
 

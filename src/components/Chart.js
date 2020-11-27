@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useTheme } from '@material-ui/core/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
-import generalStore from '../store/generalInfo';
-import Title from './Title';
-
-
-// Generate Sales Data
-function createData(time, amount) {
-  return { time, amount };
-}
-
-const oldData = [
-  createData('00:00', 0),
-  createData('03:00', 300),
-  createData('06:00', 600),
-  createData('09:00', 800),
-  createData('12:00', 1500),
-  createData('15:00', 2000),
-  createData('18:00', 2400),
-  createData('21:00', 2400),
-  createData('24:00', undefined),
-];
+import React, { useEffect, useState } from 'react'
+import { useTheme } from '@material-ui/core/styles'
+import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts'
+import { COLORS, MAX_DATA_TO_SHOW } from '../utils/constants'
+import { loopTimeline } from '../utils'
+import generalStore from '../store/generalInfo'
+import Title from './Title'
 
 export default function Chart() {
   const theme = useTheme();
@@ -29,19 +13,16 @@ export default function Chart() {
 
   useEffect(() => {
     generalStore.getLatestInfo()
-      .subscribe((value) => setData(prev => prev.concat(value)))
+      .subscribe(loopTimeline(setData, MAX_DATA_TO_SHOW))
+    return () => generalStore.unsubscribe()
   }, [])
-
-  useEffect(() => {
-    console.log(data)
-  }, [data])
 
   return (
     <React.Fragment>
       <Title>Today</Title>
       <ResponsiveContainer>
         <LineChart
-          data={oldData}
+          data={data}
           margin={{
             top: 16,
             right: 16,
@@ -49,17 +30,23 @@ export default function Chart() {
             left: 24,
           }}
         >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
-          <YAxis stroke={theme.palette.text.secondary}>
+          <XAxis 
+            dataKey="time" 
+            stroke={theme.palette.text.primary}
+            tick={{stroke: 'white', strokeWidth: 1, fill: 'white'}}
+          />
+          <YAxis stroke={theme.palette.text.secondary} tick={{stroke: 'white', strokeWidth: 1}}>
             <Label
               angle={270}
               position="left"
-              style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
+              style={{ textAnchor: 'middle', color: theme.palette.text.primary }}
             >
-              Sales ($)
+              Monitoring systems
             </Label>
           </YAxis>
-          <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />
+          <Line type="monotone" dataKey="temperature" stroke={COLORS.TEMPERATURE_COLOR} dot={false}/>
+          <Line type="monotone" dataKey="airPressure" stroke={COLORS.AIR_PRESSURE_COLOR} dot={false}/>
+          <Line type="monotone" dataKey="humidity" stroke={COLORS.HUMIDITY_COLOR} dot={false}/>
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
