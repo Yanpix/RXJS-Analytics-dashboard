@@ -44,9 +44,9 @@ export default function Chart() {
               Monitoring systems
             </Label>
           </YAxis>
-          <Line type="monotone" dataKey="temperature" stroke={COLORS.TEMPERATURE_COLOR} dot={false}/>
-          <Line type="monotone" dataKey="airPressure" stroke={COLORS.AIR_PRESSURE_COLOR} dot={false}/>
-          <Line type="monotone" dataKey="humidity" stroke={COLORS.HUMIDITY_COLOR} dot={false}/>
+          <Line type="monotone" dataKey="temperature" stroke={COLORS.TEMPERATURE_COLOR} dot={false} animationDuration={false}/>
+          <Line type="monotone" dataKey="airPressure" stroke={COLORS.AIR_PRESSURE_COLOR} dot={false} animationDuration={false}/>
+          <Line type="monotone" dataKey="humidity" stroke={COLORS.HUMIDITY_COLOR} dot={false} animationDuration={false}/>
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
