@@ -13,4 +13,8 @@ It receives its data from independent monitoring systems.
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+### Live demo
+
+> Open [Live demo](https://yanpix.github.io/RXJS-Analytics-dashboard/)
+
 ![cover for app](https://github.com/Yanpix/RXJS-Analytics-dashboard/blob/main/public/preview.jpg "preview")
