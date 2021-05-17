@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/RXJS-Analytics-dashboard/static/css/main.106baaae.chunk.css",
+    "main.js": "/RXJS-Analytics-dashboard/static/js/main.4d4387ee.chunk.js",
+    "main.js.map": "/RXJS-Analytics-dashboard/static/js/main.4d4387ee.chunk.js.map",
+    "runtime-main.js": "/RXJS-Analytics-dashboard/static/js/runtime-main.83ad81e0.js",
+    "runtime-main.js.map": "/RXJS-Analytics-dashboard/static/js/runtime-main.83ad81e0.js.map",
+    "static/js/2.b05a55c0.chunk.js": "/RXJS-Analytics-dashboard/static/js/2.b05a55c0.chunk.js",
+    "static/js/2.b05a55c0.chunk.js.map": "/RXJS-Analytics-dashboard/static/js/2.b05a55c0.chunk.js.map",
+    "static/js/3.8446e11b.chunk.js": "/RXJS-Analytics-dashboard/static/js/3.8446e11b.chunk.js",
+    "static/js/3.8446e11b.chunk.js.map": "/RXJS-Analytics-dashboard/static/js/3.8446e11b.chunk.js.map",
+    "index.html": "/RXJS-Analytics-dashboard/index.html",
+    "static/css/main.106baaae.chunk.css.map": "/RXJS-Analytics-dashboard/static/css/main.106baaae.chunk.css.map",
+    "static/js/2.b05a55c0.chunk.js.LICENSE.txt": "/RXJS-Analytics-dashboard/static/js/2.b05a55c0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.83ad81e0.js",
+    "static/js/2.b05a55c0.chunk.js",
+    "static/css/main.106baaae.chunk.css",
+    "static/js/main.4d4387ee.chunk.js"
+  ]
+}
